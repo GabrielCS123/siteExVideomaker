@@ -1,13 +1,13 @@
 gsap.registerPlugin(ScrollTrigger);
 
 ScrollTrigger.config({
-    ignoreMobileResize: true
-  });
+  autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+});
 
 /* ================= HERO TIMELINE ================= */
 
 const tl = gsap.timeline({
-  defaults: { ease: "power4.out" },
+  defaults: { ease: "none" },
 });
 
 tl.from(".header", {
@@ -40,23 +40,21 @@ tl.from(
 tl.from(
   ".hero-text",
   {
-    y: 40,
-    opacity: 0,
-    duration: 0.8,
-  },
-  "-=0.6"
-);
-
-tl.from(
-  ".hero-btn",
-  {
-    scale: 0.7,
+    scale: 0,
     opacity: 0,
     duration: 0.8,
     ease: "elastic.out(1, 0.6)",
   },
-  "-=0.5"
+  "-=0.6"
 );
+
+tl.to(".hero-btn", {
+  y: 0,
+  scale: 1,
+  opacity: 1,
+  duration: 0.9,
+  ease: "elastic.out(1, 0.5)",
+}, "-=0.6");
 
 /* ================= VIDEO (SEM BUG) ================= */
 
@@ -162,26 +160,36 @@ navLinks.forEach((link) => {
 ========================= */
 
 gsap.set(".evaporate", {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)"
-  });
-  
-  gsap.to(".evaporate", {
-    opacity: 0,
-    y: -120,
-    filter: "blur(12px)",
-    stagger: 0.1,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".hero",
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-      invalidateOnRefresh: true
-    }
-  });
+  opacity: 1,
+  y: 0,
+  filter: "blur(0px)",
+});
 
-  window.addEventListener("load", () => {
-    ScrollTrigger.refresh();
-  });
+let evapTween = gsap.to(".evaporate", {
+  opacity: 0,
+  y: -120,
+  filter: "blur(12px)",
+  stagger: 0.1,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".hero",
+    start: "top top",
+    end: "bottom top",
+    scrub: 1,
+    invalidateOnRefresh: true,
+    onLeaveBack: () => {
+      gsap.set(".evaporate", {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        clearProps: "all",
+      });
+    },
+  },
+});
+
+
+window.addEventListener("load", () => {
+  ScrollTrigger.refresh();
+});
+
