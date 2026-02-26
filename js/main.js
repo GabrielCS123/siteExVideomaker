@@ -29,15 +29,35 @@ window.addEventListener("DOMContentLoaded", () => {
       "-=0.6"
     );
 
-    tl.from(
+    /* 🔥 NOVA ANIMAÇÃO PROFISSIONAL */
+
+    tl.fromTo(
       ".dramatic",
       {
-        scale: 0.5,
+        y: 80,
         opacity: 0,
-        duration: 1.2,
-        ease: "back.out(1.7)",
+        scale: 0.8,
+        filter: "blur(10px)"
       },
-      "-=0.5"
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 1.4,
+        ease: "expo.out"
+      },
+      "-=0.6"
+    );
+
+    tl.to(
+      ".dramatic-glow",
+      {
+        opacity: 0.6,
+        duration: 1.4,
+        ease: "power2.out",
+      },
+      "-=1"
     );
 
     tl.from(
@@ -61,6 +81,14 @@ window.addEventListener("DOMContentLoaded", () => {
       },
       "-=0.6"
     );
+
+    gsap.to(".dramatic", {
+      textShadow: "0 0 25px rgba(255,61,90,0.6)",
+      repeat: -1,
+      yoyo: true,
+      duration: 2,
+      ease: "sine.inOut"
+    });
 
     /* ================= VIDEO ================= */
 
@@ -155,50 +183,7 @@ window.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.refresh();
   });
 
-  // Cleanup futuro (SPA / React compatível)
   window.addEventListener("beforeunload", () => {
     ctx.revert();
   });
-});
-
-/* ================= MENU ================= */
-
-const toggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav-links");
-
-if (toggle && nav) {
-  toggle.addEventListener("click", () => {
-    nav.classList.toggle("nav-active");
-    toggle.classList.toggle("toggle-active");
-  });
-}
-
-/* ================= NAV HOVER ================= */
-
-const navLinks = document.querySelectorAll(".nav-links a");
-
-navLinks.forEach((link) => {
-
-  link.addEventListener("mouseenter", () => {
-    gsap.to(link, {
-      y: -3,
-      color: "#ffffff",
-      textShadow: "0 0 15px rgba(255,61,90,0.6)",
-      duration: 0.4,
-      ease: "power2.out",
-      overwrite: "auto",
-    });
-  });
-
-  link.addEventListener("mouseleave", () => {
-    gsap.to(link, {
-      y: 0,
-      color: "rgba(255,255,255,0.7)",
-      textShadow: "0 0 0px rgba(0,0,0,0)",
-      duration: 0.4,
-      ease: "power2.out",
-      overwrite: "auto",
-    });
-  });
-
 });
