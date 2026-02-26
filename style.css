@@ -32,10 +32,6 @@ video {
   height: auto;
 }
 
-video {
-  background-color: transparent !important;
-}
-
 body {
   font-family: var(--font-primary);
   background:
@@ -50,7 +46,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("noise.png");
+  background-image: url("imagens/noise.png");
   opacity: 0.035;
   pointer-events: none;
 }
@@ -253,13 +249,18 @@ nav a:hover {
   justify-content: center;
 }
 
+.video-wrapper:hover .hero-image {
+  transform: scale(1.05);
+}
+
 .video-wrapper {
   position: relative;
   border-radius: 28px;
-  overflow: hidden;
-  transform: none; /* remove rotação */
-}
 
+  max-width: 280px; /* controla tamanho */
+  width: 100%;
+  margin: 0 auto; /* centraliza no mobile */
+}
 .video-glow {
   position: absolute;
   inset: -50px;
@@ -270,21 +271,21 @@ nav a:hover {
     rgba(255, 120, 0, 0.45),
     transparent 70%
   );
-  filter: blur(1000px);
+  filter: blur(55px);
   z-index: -1;
   opacity: 0.7;
 }
 
-.hero-video {
-  background: transparent;
+.hero-image {
+  transition: transform 0.6s ease;
+}
+
+.hero-image {
   width: 100%;
   max-width: 560px;
   border-radius: 28px;
   display: block;
   object-fit: cover;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 /* SECTIONS */
