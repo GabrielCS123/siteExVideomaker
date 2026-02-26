@@ -256,7 +256,7 @@ nav a:hover {
 .video-wrapper {
   position: relative;
   border-radius: 40px 10px 60px 20px;
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(-0.8deg);
   will-change: transform;
 }
 
