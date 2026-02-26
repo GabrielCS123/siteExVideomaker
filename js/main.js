@@ -4,6 +4,7 @@ ScrollTrigger.config({
   autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
 });
 
+
 window.addEventListener("DOMContentLoaded", () => {
   const ctx = gsap.context(() => {
 
@@ -123,8 +124,8 @@ window.addEventListener("DOMContentLoaded", () => {
       start: 50,
       onEnter: () => {
         gsap.to(".header", {
-          backgroundColor: "rgba(10, 10, 18, 0.85)",
-          backdropFilter: "blur(12px)",
+          backgroundColor: "rgba(15, 15, 25, 0.75)",
+          backdropFilter: "blur(18px)",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
           boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
           paddingTop: 12,
@@ -177,7 +178,7 @@ window.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-  });
+  });  
 
   window.addEventListener("load", () => {
     ScrollTrigger.refresh();
@@ -187,6 +188,160 @@ window.addEventListener("DOMContentLoaded", () => {
     ctx.revert();
   });
 });
+
+
+/* =============================
+   ENTRADAS GLOBAIS REUTILIZÁVEIS
+============================= */
+
+function animateFadeUp() {
+  gsap.utils.toArray(".fade-up").forEach((el) => {
+    gsap.from(el, {
+      y: 80,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  });
+}
+
+function animateFadeDown() {
+  gsap.utils.toArray(".fade-down").forEach((el) => {
+    gsap.from(el, {
+      y: -80,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+      },
+    });
+  });
+}
+
+function animateFadeLeft() {
+  gsap.utils.toArray(".fade-left").forEach((el) => {
+    gsap.from(el, {
+      x: -120,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+      },
+    });
+  });
+}
+
+function animateFadeRight() {
+  gsap.utils.toArray(".fade-right").forEach((el) => {
+    gsap.from(el, {
+      x: 120,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+      },
+    });
+  });
+}
+
+function animateZoomIn() {
+  gsap.utils.toArray(".zoom-in").forEach((el) => {
+    gsap.from(el, {
+      scale: 0.6,
+      opacity: 0,
+      duration: 1,
+      ease: "expo.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+      },
+    });
+  });
+}
+
+function animateZoomSoft() {
+  gsap.utils.toArray(".zoom-soft").forEach((el) => {
+    gsap.from(el, {
+      scale: 0.85,
+      opacity: 0,
+      duration: 1.4,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+      },
+    });
+  });
+}
+
+function animateBlurIn() {
+  gsap.utils.toArray(".blur-in").forEach((el) => {
+    gsap.fromTo(
+      el,
+      {
+        opacity: 0,
+        y: 60,
+        filter: "blur(12px)",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 1.4,
+        ease: "expo.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+        },
+      }
+    );
+  });
+}
+
+function animateRotateIn() {
+  gsap.utils.toArray(".rotate-in").forEach((el) => {
+    gsap.from(el, {
+      opacity: 0,
+      y: 60,
+      rotate: 8,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+      },
+    });
+  });
+}
+
+/* =============================
+   INICIALIZAÇÃO
+============================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  animateFadeUp();
+  animateFadeDown();
+  animateFadeLeft();
+  animateFadeRight();
+  animateZoomIn();
+  animateZoomSoft();
+  animateBlurIn();
+  animateRotateIn();
+  animateStaggerGroups();
+});
+
+
 
 /* ================= MENU MOBILE ================= */
 
@@ -201,3 +356,4 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.classList.toggle("toggle-active");
   });
 });
+
