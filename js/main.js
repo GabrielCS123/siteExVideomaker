@@ -12,9 +12,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const tl = gsap.timeline();
 
-    tl.from(".header", {
-      y: -80,
-      opacity: 0,
+    gsap.set(".header", { y: -80, opacity: 0 });
+
+    tl.to(".header", {
+      y: 0,
+      opacity: 1,
       duration: 1,
       ease: "power3.out",
     });

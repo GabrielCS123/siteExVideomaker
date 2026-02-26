@@ -62,14 +62,10 @@ body::before {
 
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  min-height: 88px; /* garante altura mínima */
   padding: 24px 0;
   z-index: 999;
-  transition: all 0.3s ease;
-  will-change: transform, background, backdrop-filter;
+  transition: all 0.1s ease;
 }
 
 .header-inner {
