@@ -74,17 +74,6 @@ window.addEventListener("DOMContentLoaded", () => {
       "-=0.6"
     );
 
-    tl.from(
-      ".hero-btn",
-      {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      },
-      "-=0.6"
-    );
-
     gsap.to(".dramatic", {
       textShadow: "0 0 25px rgba(255,61,90,0.6)",
       repeat: -1,
