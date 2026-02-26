@@ -213,6 +213,10 @@ nav a:hover {
 
 /* NAV HOVER */
 
+.nav-links {
+  background-color: #050505;
+}
+
 .nav-links a {
   position: relative;
   padding: 8px 4px;
