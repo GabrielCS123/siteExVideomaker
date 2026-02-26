@@ -55,7 +55,6 @@ body::before {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
 /* HEADER */
@@ -902,5 +901,9 @@ nav a:hover {
 
   .toggle-active span:nth-child(3) {
     transform: rotate(-45deg) translateY(-8px);
+  }
+
+  .logo {
+    margin-left: 20px;
   }
 }
