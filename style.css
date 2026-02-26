@@ -213,10 +213,6 @@ nav a:hover {
 
 /* NAV HOVER */
 
-.nav-links {
-  background-color: #050505;
-}
-
 .nav-links a {
   position: relative;
   padding: 8px 4px;
@@ -892,6 +888,10 @@ nav a:hover {
 
   .btn-outline {
     display: none;
+  }
+
+  .nav-links {
+    background-color: #050505;
   }
 
   /* animação hambúrguer */
