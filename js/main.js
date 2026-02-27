@@ -329,7 +329,6 @@ document.addEventListener("DOMContentLoaded", () => {
   animateZoomSoft();
   animateBlurIn();
   animateRotateIn();
-  animateStaggerGroups();
 });
 
 
